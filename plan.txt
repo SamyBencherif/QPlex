@@ -1,0 +1,3 @@
+I will target Pythonista first.
+
+Let's start by seeing if the emulator is any good.

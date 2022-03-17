@@ -1,0 +1,78 @@
+Desired Features:
+
+  Input
+    Single-Touch / Mouse-Down
+      ...data comes as 3-bytes (mouseDown, mouseX, mouseY)
+      ...if mouseDown is 0, then mouseX and mouseY should
+      ...be discarded
+      ...values mousePressed and mouseRelease can be 
+      ...inferred by storing the previous mouse state
+      ...in a variable such as mouseWasDown (set 0 on 
+      ...first frame)
+      ...then mousePressed = mouseDown & !mouseWasDown
+      ...and mouseReleased = !mouseDown & mouseWasDown
+    Typed
+    6-Button
+      ...requires polyfill. platforms consisting of or
+      ...able to emulate a D-PAD and two action buttons
+      ...can map to this input style directly
+      ...otherwise swipes, tap, and two-finger or double
+      ...tap can be used on a touch screen and
+      ...WASD-ZX or UP,RIGHT,DOWN,LEFT,Z,X can be used
+      ...via keyboard
+  Drawing
+    Shader
+      ...fragment shader
+      ...uniform width, height, time
+      ...uniform md, mx, my
+      ...display maps x [0,1] y [0,1]
+      ...x+ right, y+ down
+      ...shader is drawn after all
+      ...other calls
+    Color
+      ...even the main buffer support alpha, which
+      ...can be useful for shaders
+    Triangle-Fill
+      ...varies color
+    Path-Stroke
+      ...straight line from point to point
+      ...varies color
+      ...varies thickness
+      ...varies thickness-expression
+        ...ie drawing a stream of squares/circles/etc
+      ...a single vertex with thickness=1 should blit a 
+      ...single pixel
+    Text-Fill
+      ...in order to look exactly the same on all 
+      ...platforms I will use a personal bitmap
+      ...font converted to C-style data format
+  Filesystem
+    Program-Database
+      ...for example if my program is called demo
+      ...there will be a file called demo.programdata
+      ...which contains any necessary persistent data
+  Program-Execution
+    ...the previous entries in this desired-feature
+    ...list constitute features that host platforms
+    ...will need to support. Among those are program
+    ...execution capabilities. This is the one
+    ...category of requirements that does not need
+    ...to be propagated to the client (such as an
+    ...in-code eval function).
+      ...at most the client could point the
+      ...interpreter to an entirely different file
+      ...to run
+    ...program execution capabilities will be drawn
+    ...from the simplest target platform ANSI-C
+    Character-Input
+    Static-Strings
+    String-Comparison
+    ...Actually fuck it... I'll make a C-like language
+
+  Misc (bonus, where applicable)
+    ... i'm never going to implement these lol
+    HTTP-Request
+    Microphone Input
+    Camera Input
+    Accelerometer Input
+    GPS Input
