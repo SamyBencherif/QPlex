@@ -1,0 +1,15 @@
+
+// INTERFACE INPUT
+getMouseX()
+getMouseY()
+getMouseD()
+
+// GRAPHICS OUTPUT
+color(255,255,255,200)
+beginPath()
+vertex(x,y)
+closePath(FILL|STROKE)
+
+// PERSISTENT I/O
+dbread(key)
+dbwrite(key, size, value)

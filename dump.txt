@@ -71,14 +71,16 @@ Desired Features:
     Static-Strings
     String-Comparison
     ...Actually fuck it... I'll make a C-like language
-
-  Misc (bonus, where applicable)
+                                     (I ended up not doing that)
+  Misc (bonus, where applicable)     (designed a new lang) (and using actual C seperately for bindings)
     ... i'm never going to implement these lol
     HTTP-Request
     Microphone Input
     Camera Input
     Accelerometer Input
     GPS Input
+    ***TEXTURES***
+    (shaders)
 
                               Platform         =   Pythonista                           = Raylib   = RMKitSimple             =  P5.js
 ================================================================================================================================================

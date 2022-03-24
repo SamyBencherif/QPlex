@@ -1,0 +1,13 @@
+x = [5:25,6:36]
+# does not start at zero so it will not look like a list printed out
+x[1] = 1
+x[2] = 4
+x[3] = 9
+x[4] = 16
+print(x)
+
+x = [1,2,3,4]
+print(x)
+
+print([1,2,3,"cat":"dog"]) # has key outside of 0-n range, therefore
+# not printed like a list
