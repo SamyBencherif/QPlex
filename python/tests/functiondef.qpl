@@ -1,3 +1,0 @@
-noop = x,y: {
-  return x;
-}

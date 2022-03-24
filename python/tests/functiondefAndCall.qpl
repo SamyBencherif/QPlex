@@ -1,7 +1,0 @@
-noop = x:
-{
-  return x
-}
-
-print(noop(5))
-print(noop("good girl!"))
