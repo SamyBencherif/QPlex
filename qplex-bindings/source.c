@@ -1,4 +1,3 @@
-#include "qplex.h"
 #include "qpcommons.h"
 
 void start()
@@ -7,5 +6,13 @@ void start()
 
 void update()
 {
-  tri(v2(100,100+mouse().y), v2(200,100+mouse().y), v2(150,200+mouse().y), v4(100,200,100,255));
+  bonus_vars();
+
+  color(v4(255,255,255,255));
+  rect(v4(0,0,width,height));
+
+  color(v4(255,0,mouse.z*255,255));
+  rect(v4(width/2,height/2,100,100));
+
+  tgamepad();
 }
