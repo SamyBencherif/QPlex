@@ -68,8 +68,10 @@ void bonus_vars()
 
 int vbutton(vec bounds)
 {
+  vec _col = col;
   //col
   rect(bounds);
+  col = _col;
 }
 
 // touch gamepad
