@@ -2,17 +2,17 @@
 
 typedef struct { float x; float y; float z; float w; } vec;
 
+/*
 const enum {
   NONE,
   VIRTUAL,
   POINT,
   MULTIPOINT,
 } pntCap = ...;
-/*
 my various (input) devices:
 pinephone....................MULTIPOINT
-mbp..........................POINT
-rmk2.........................POINT
+mbp..........................POINT (MP with driver lvl hack)
+rmk2.........................MULTIPOINT
 PC+ext_mouse.................POINT 
 PC+ext_keyboard..............VIRTUAL
 PC+ext_gamepad               VIRTUAL
@@ -47,8 +47,23 @@ PC+ext_pinephone 2 accel 2-5 virt
 PC+ext_net_iphone same^ but less reliable
 */
 
-// TODO: fig how much this info really needs to be polled by client prog
-// 2 touch points, 9 btns, (3 analog axes/btns)
+/*
+POINT_A          ...............................  X:f,Y:f,EXISTS:b
+CONTACT_A        ...............................  DOWN:b,EXISTS:b
+B,C,D
+pointcontact = <x, y, down, 0:dne|1:pointeronly|2:pointercontact|3:contactonly>
+4 vectors
+      
+BTN0 - BTN9      ...............................  DOWN:b,EXISTS:b
+button = <down,exists,undef,undef>
+10 vectors
+               
+AXA AXB AXC AXD AXE AXF ........................  V:f,EXISTS:b,PAIRED:b,CIRCULAR:b
+axis = <value,exists,paired (2d),circular>
+4 vectors
+
+total of 20 input vectors
+*/
 
 void start();
 void update();
@@ -56,7 +71,7 @@ void update();
 int width = 720;
 int height = 1440;
 
-vec touches[2]; 
+vec input[20]; 
 
 int main()
 {
@@ -72,15 +87,15 @@ int main()
   {
     BeginDrawing();
 
-    touches[0].x = GetMouseX();
-    touches[0].y = GetMouseY();
-    touches[0].z = IsMouseButtonDown(0);
-    touches[0].w = 1; // exists ? yes.
+    input[0].x = GetMouseX();
+    input[0].y = GetMouseY();
+    input[0].z = IsMouseButtonDown(0);
+    input[0].w = 1; // exists ? yes.
 
-    touches[1].x = 0; 
-    touches[1].y = 0;
-    touches[1].z = 0;
-    touches[1].w = 0; // exists ? no.
+    input[1].x = 0; 
+    input[1].y = 0;
+    input[1].z = 0;
+    input[1].w = 0; // exists ? no.
 
     update();
     EndDrawing();

@@ -3,7 +3,9 @@
 typedef vec vec4;
 typedef vec vec3;
 typedef vec vec2;
-#define mouse (touches[0])
+#define mouse (input[0])
+#define touch0 (input[0])
+#define touch1 (input[1])
 
 vec v2(float x, float y)
 {
@@ -37,6 +39,7 @@ vec vl4c(float y, float x, float w, float z)
 
 vec col = {255,255,255,255};
 
+// set color
 void color(vec c)
 {
   col = c;
@@ -63,15 +66,16 @@ void bonus_vars()
 
 }
 
-// keyboard gamepad
-void kgamepad();
-
-// real gamepad
-void rgamepad();
+int vbutton(vec bounds)
+{
+  //col
+  rect(bounds);
+}
 
 // touch gamepad
-void tgamepad()
+void vgamepad()
 {
+
   bonus_vars();
   color(v4(107, 67, 67, 255));
   rect(vl4(0,0,panel_width,lheight));
@@ -82,16 +86,26 @@ void tgamepad()
   int btn_margin = 20;
   int dlt = btn_size + btn_margin;
   int x = panel_width/2; int y = lheight/2;
-  //rect(vl4c(x,y,btn_size,btn_size));   // LPAD D-CNT
-  rect(vl4c(x+dlt,y,btn_size,btn_size)); // LPAD D-RGT
-  rect(vl4c(x,y-dlt,btn_size,btn_size)); // LPAD D-UPB
-  rect(vl4c(x-dlt,y,btn_size,btn_size)); // LPAD D-LFT
-  rect(vl4c(x,y+dlt,btn_size,btn_size)); // LPAD D-DWN
+  //vbutton(vl4c(x,y,btn_size,btn_size));   // LPAD D-CNT
+  vbutton(vl4c(x+dlt,y,btn_size,btn_size)); // LPAD D-RGT
+  vbutton(vl4c(x,y-dlt,btn_size,btn_size)); // LPAD D-UPB
+  vbutton(vl4c(x-dlt,y,btn_size,btn_size)); // LPAD D-LFT
+  vbutton(vl4c(x,y+dlt,btn_size,btn_size)); // LPAD D-DWN
   
   x = lwidth - panel_width/2;
-  rect(vl4c(x,y,btn_size,btn_size));     // RPAD D-CNT
-  rect(vl4c(x+dlt,y,btn_size,btn_size)); // RPAD D-RGT
-  rect(vl4c(x,y-dlt,btn_size,btn_size)); // RPAD D-UPB
-  rect(vl4c(x-dlt,y,btn_size,btn_size)); // RPAD D-LFT
-  rect(vl4c(x,y+dlt,btn_size,btn_size)); // RPAD D-DWN
+  vbutton(vl4c(x,y,btn_size,btn_size));     // RPAD D-CNT
+  vbutton(vl4c(x+dlt,y,btn_size,btn_size)); // RPAD D-RGT
+  vbutton(vl4c(x,y-dlt,btn_size,btn_size)); // RPAD D-UPB
+  vbutton(vl4c(x-dlt,y,btn_size,btn_size)); // RPAD D-LFT
+  vbutton(vl4c(x,y+dlt,btn_size,btn_size)); // RPAD D-DWN
+}
+
+void gamepad()
+{
+  // in the future: poll input for capabilities
+  // if the implementation is attached to something close enough
+  // to a real controller, don't show this interface
+  // (or if perhaps it has less than 2 contact points)
+
+  vgamepad();
 }
