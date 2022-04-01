@@ -1,0 +1,7 @@
+x = 5
+print(x)
+print(mem.x)
+print(mem['x'])
+mem.x = 6
+print(x)
+# text file
