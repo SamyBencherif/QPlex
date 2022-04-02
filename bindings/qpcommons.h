@@ -73,8 +73,33 @@ int vbutton(vec bounds)
 {
   vec _col = col;
   //col
+  int btndown = 0;
+  if (mouse.z)
+  {
+    if (bounds.x < mouse.x)
+    if (bounds.y < mouse.y)
+    if (bounds.x+bounds.z > mouse.x)
+    if (bounds.y+bounds.w > mouse.y)
+      btndown = 1;
+  }
+  if (touch1.z)
+  {
+    if (bounds.x < touch1.x)
+    if (bounds.y < touch1.y)
+    if (bounds.x+bounds.z > touch1.x)
+    if (bounds.y+bounds.w > touch1.y)
+      btndown = 1;
+  }
+  if (btndown)
+  {
+    float brite = .9;
+    col.x = 255-(255-col.x)*(1-brite);
+    col.y = 255-(255-col.y)*(1-brite);
+    col.z = 255-(255-col.z)*(1-brite);
+  }
   rect(bounds);
   col = _col;
+  return btndown;
 }
 
 // touch gamepad
