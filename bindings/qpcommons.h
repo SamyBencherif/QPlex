@@ -69,7 +69,12 @@ void bonus_vars()
 
 }
 
-int vbutton(vec bounds)
+void vset(vbtn btn, int value)
+{
+  btn.value = value;
+}
+
+int vbtn_draw(vbtn btn, vec bounds)
 {
   vec _col = col;
   //col
@@ -117,7 +122,7 @@ void vgamepad()
   int dlt = btn_size + btn_margin;
   int x = panel_width/2; int y = lheight/2;
   //vbutton(vl4c(x,y,btn_size,btn_size));   // LPAD D-CNT
-  vbutton(vl4c(x+dlt,y,btn_size,btn_size)); // LPAD D-RGT
+  vbutton(vl4c(x+dlt,y,btn_size,btn_size))); // LPAD D-RGT
   vbutton(vl4c(x,y-dlt,btn_size,btn_size)); // LPAD D-UPB
   vbutton(vl4c(x-dlt,y,btn_size,btn_size)); // LPAD D-LFT
   vbutton(vl4c(x,y+dlt,btn_size,btn_size)); // LPAD D-DWN
