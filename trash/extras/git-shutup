@@ -1,8 +1,0 @@
-#!/bin/bash
-
-
-# Performs a task bequeathed by an unneccessary git warning
-
-# sets it to merge, apparently the default strategy
-git config pull.rebase false 
-# but I still have to do it myself for some reason

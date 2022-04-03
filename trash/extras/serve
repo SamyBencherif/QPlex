@@ -1,6 +1,0 @@
-#!/bin/bash
-
-
-# Quickly host a local server. 
-
-python3 -m http.server --bind localhost $1

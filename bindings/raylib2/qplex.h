@@ -73,6 +73,9 @@ int height = 1440;
 
 vec input[20]; 
 
+void _qp_poststart;
+void _qp_postupdate;
+
 int main()
 {
 
@@ -82,6 +85,7 @@ int main()
   SetTargetFPS(60);
 
   start(); 
+  _qp_poststart();
   ClearBackground(BLACK);
   while (!WindowShouldClose())  
   {
@@ -98,6 +102,7 @@ int main()
     input[1].w = 0; // exists ? no.
 
     update();
+    _qp_postupdate();
     EndDrawing();
   }
 
